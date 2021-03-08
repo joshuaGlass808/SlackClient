@@ -1,0 +1,33 @@
+{
+    "name": "jlg/slack-client",
+    "description": "A Laravel package containing a simple slack client",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jlg\\SlackClientServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
+    "require-dev": {
+        "laravel/framework": "^5.8",
+        "orchestra/testbench": "3.8"
+    },
+    "autoload": {
+        "psr-4": {"Jlg\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jlg\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
