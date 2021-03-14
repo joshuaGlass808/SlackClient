@@ -9,21 +9,25 @@ use GuzzleHttp\{
     Psr7\Response
 };
 
-class SlackClientService {
+class SlackClientService 
+{
 
     /**
-    * @param string text - simple text message.
-    * @param string $channel - example: https://hooks.slack.com/services/**T16**89/*******8/*********DF89********
-    * @param array $options - default is [].
-    *    keys:
-    *      - username => Custom Username, default is SlackClient
-    *      - attachments => Custom Slack message attachment, see readme for more details.
-    *
-    * @return Response
-    *
-    */ 
-    public function sendSimpleSlackMessage(string $text, string $channel, array $options = []): Response
-    {
+     *  Sends a message to a slack webHook Url "channel".
+     * 
+     * @param string $text 
+     * @param string $channel 
+     * @param SlackAttachment|null $attachment 
+     * @param string $username default ''
+     * 
+     * @return Response
+     */
+    public function sendSimpleSlackMessage(
+        string $text, 
+        string $channel, 
+        ?SlackAttchment $attachment, 
+        string $username = ''
+    ): Response {
         $payload = [
             'text' => $text
         ];
@@ -31,10 +35,11 @@ class SlackClientService {
         if (isset($options['username'])) {
             $payload['username'] = $options['username'];
         }
-
-        if (isset($options['attachments'])) {
-            $payload['attachments'] = $options['attachments'];
+        
+        if ($attachment !== null) {
+            $payload['attachments'] = $attachment->toArray();
         }
+
 
         return (new Guzzle())->post($channel, ['json' => $payload]);
     }
