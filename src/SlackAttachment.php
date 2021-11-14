@@ -27,9 +27,19 @@ class SlackAttachment
         }
 
         if (!isset($attachmentValues['attachment_type'])) {
-            $this->toArray['attachment_type'] $this->attachmentType;
+            $this->toArray['attachment_type'] = $this->attachmentType;
         }
 
+    }
+
+    /**
+     * An Additional call to toArray()
+     * 
+     * @return array
+     */
+    public function __serialize(): array
+    {
+        return $this->toArray();
     }
 
     /**

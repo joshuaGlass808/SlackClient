@@ -15,10 +15,6 @@
             }
         }
     },
-    "require-dev": {
-        "laravel/framework": "^5.8",
-        "orchestra/testbench": "3.8"
-    },
     "autoload": {
         "psr-4": {"Jlg\\": "src/"}
     },
@@ -29,5 +25,9 @@
     },
     "scripts": {
         "test": "phpunit"
+    },
+    "require-dev": {
+        "laravel/framework": "^8.70",
+        "orchestra/testbench": "^6.23"
     }
 }
