@@ -39,3 +39,5 @@ Here is an example of the slack attachment array being used for a message that s
         ];
 
 Please see slacks documentation for more details on what is valid.
+
+@todo - update documentation and update tests
